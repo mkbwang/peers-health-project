@@ -4,7 +4,7 @@ CREATE TABLE patients(
   age INTEGER NOT NULL,
   gender VARCHAR(2) NOT NULL,
   NCCI INTEGER NOT NULL,
-  legal INTEGER NOT NULL,
+  legal VARCHAR(2) NOT NULL,
   last_work TEXT NOT NULL,
   absence INTEGER NOT NULL,
   total_duration INTEGER NOT NULL,
