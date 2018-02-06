@@ -3,7 +3,6 @@
 
 # Stop on errors
 set -e
-
 # Sanity check command line options
 usage() {
   echo "Usage: $0 (create|destroy|reset|head)"
@@ -46,11 +45,11 @@ case $1 in
     else
         echo "+ sqlite3 -batch -line ODG.sqlite3 'SELECT * FROM patients LIMIT 5'"
         sqlite3 -batch -line ODG.sqlite3 'SELECT * FROM patients LIMIT 5'
-        echo "+ sqlite3 -batch -line ODG.sqlite3 'SELECT * FROM ICD9 LIMIT 5'"
+        echo "+ sqlite3 -batch -line ODG.sqlite3 'SELECT * FROM icd9 LIMIT 5'"
         sqlite3 -batch -line ODG.sqlite3 'SELECT * FROM ICD9 LIMIT 5'
-        echo "+ sqlite3 -batch -line ODG.sqlite3 'SELECT * FROM PC LIMIT 5'"
+        echo "+ sqlite3 -batch -line ODG.sqlite3 'SELECT * FROM pc LIMIT 5'"
         sqlite3 -batch -line ODG.sqlite3 'SELECT * FROM PC LIMIT 5'
-        echo "+ sqlite3 -batch -line ODG.sqlite3 'SELECT * FROM OT LIMIT 5'"
+        echo "+ sqlite3 -batch -line ODG.sqlite3 'SELECT * FROM ot LIMIT 5'"
         sqlite3 -batch -line ODG.sqlite3 'SELECT * FROM OT LIMIT 5'
     fi
     ;;

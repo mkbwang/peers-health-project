@@ -2,9 +2,9 @@ CREATE TABLE patients(
   claim_no INTEGER PRIMARY KEY NOT NULL,
   date_injury TEXT NOT NULL,
   age INTEGER NOT NULL,
-  gender VARCHAR(2) NOT NULL,
+  gender TEXT NOT NULL,
   NCCI INTEGER NOT NULL,
-  legal VARCHAR(2) NOT NULL,
+  legal TEXT NOT NULL,
   last_work TEXT NOT NULL,
   absence INTEGER NOT NULL,
   total_duration INTEGER NOT NULL,
@@ -14,14 +14,16 @@ CREATE TABLE patients(
 );
 
 CREATE TABLE icd9(
-  claim_no INTEGER PRIMARY KEY NOT NULL,
+  rowid INTEGER PRIMARY KEY AUTOINCREMENT,
+  claim_no INTEGER NOT NULL,
   code TEXT NOT NULL,
   date_code TEXT NOT NULL,
   FOREIGN KEY (claim_no) REFERENCES patients(claim_no)
 );
 
 CREATE TABLE pc(
-  claim_no INTEGER PRIMARY KEY NOT NULL,
+  rowid INTEGER PRIMARY KEY AUTOINCREMENT,
+  claim_no INTEGER NOT NULL,
   pcode TEXT NOT NULL,
   date_service TEXT NOT NULL,
   amount_paid REAL NOT NULL,
@@ -31,7 +33,8 @@ CREATE TABLE pc(
 );
 
 CREATE TABLE ot(
-  claim_no INTEGER PRIMARY KEY NOT NULL,
+  rowid INTEGER PRIMARY KEY AUTOINCREMENT,
+  claim_no INTEGER NOT NULL,
   OT TEXT NOT NULL,
   date_service TEXT NOT NULL,
   amount_paid REAL NOT NULL,
