@@ -30,9 +30,13 @@
 
   Remains to be answered.
 
-## Other general questions
+## About the files in this repo
 
-* What does PEERS want from us? A report? A bunch of codes that fulfill their ML tasks of their data?
-* I believe we need to make some form of presentation on Feb 15th for PEERS. What are we planning to present?
-* How large is the dataset?
-* How long will the project be? On the [PEERS WEBSITE](https://www.peershealth.com/university-of-michigan-rtw-intelligent-learning-research/), they say it is going to be 2 years. Will it be that long? 
+* setup.sql is used for setting up the database. It includes all the creating table commands.
+* ODGdb is a shell script. It supports _./ODGdb create/destroy/reset/head_ commands. These four commands create the database, destroy the database, reset the database and print out the first three entries of every table in the database.
+* prep.py is used for inserting data into the database. Can only be used after database is set up.
+
+## Issues
+
+* The python script is still using sqlite3 api. Should switch to psycopg2.
+* The database structure remains to be settled.
