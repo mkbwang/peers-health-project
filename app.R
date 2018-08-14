@@ -11,19 +11,20 @@ library(shiny)
 library(ggfortify)
 library(survival)
 
+#read in the data initially
 data = read.csv('ODG_Sample_Raw.csv')
 data = data[,c('X3_Age','X4_Gender','X12_Total.Disability.Duration')]
 data['censor'] = 1
 colnames(data) = c('Age','Gender','Disability_Duration','Censor')
 
 
-# Define UI for application that draws a histogram
+# Define UI for application that plots the KM curve
 ui <- fluidPage(
    
    # Application title
    titlePanel("KM Curve"),
    
-   # Sidebar with a slider input for number of bins 
+   # Sidebar with a dropdown list for gender 
    sidebarLayout(
       sidebarPanel(
         selectInput(inputId = "age", 
@@ -34,14 +35,14 @@ ui <- fluidPage(
                     
       ),
       
-      # Show a plot of the generated distribution
+      # Show a plot of the generated curve
       mainPanel(
          plotOutput("distPlot")
       )
    )
 )
 
-# Define server logic required to draw a histogram
+# Define server logic required to draw the KM curve
 server <- function(input, output) {
   fit <- reactive({
     if (input$age=='young'){
@@ -53,7 +54,6 @@ server <- function(input, output) {
     fit <- survfit(Surv(Disability_Duration, Censor) ~ Gender, data = subdata)
   })
    output$distPlot <- renderPlot({
-      # generate bins based on input$bins from ui.R
       autoplot(fit())
    })
 }
